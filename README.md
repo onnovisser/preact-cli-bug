@@ -1,8 +1,39 @@
 # preact-cli-bug
 
+## To reproduce
+
+Run `npm run dev`. It shouldn't compile. In `button.js` change
+
+```jsx
+<CompWithRenderProp
+    render={() => <button onClick={onClick}>Click</button>
+/>
+```
+
+to
+
+```jsx
+<CompWithRenderProp
+    render={() => <button onClick={() => onClick())}>Click</button>
+/>
+```
+
+or
+
+```jsx
+<CompWithRenderProp
+    render={() => {
+    const handler = onClick;
+    return <button onClick={handler}>Click</button>;
+    }}
+/>
+```
+
+Now it should compile.
+
 ## CLI Commands
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -15,7 +46,7 @@ npm run build
 # test the production build locally
 npm run serve
 
-# run tests with jest and preact-render-spy 
+# run tests with jest and preact-render-spy
 npm run test
 ```
 
