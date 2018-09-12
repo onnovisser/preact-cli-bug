@@ -14,7 +14,7 @@ to
 
 ```jsx
 <CompWithRenderProp
-    render={() => <button onClick={() => onClick())}>Click</button>
+    render={() => <button onClick={() => onClick()}>Click</button>}
 />
 ```
 
